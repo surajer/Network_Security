@@ -57,7 +57,7 @@ class NetworkDataExtract():
 
 if __name__=='__main__':
     FILE_PATH="./Network_Data/NetworkData.csv"
-    DATABASE="SYAcademy"
+    DATABASE="Academy1"
     COLLECTION="NetworkData"
     networobj=NetworkDataExtract()
     records=networobj.csv_tojson_convertor(FILE_PATH)
