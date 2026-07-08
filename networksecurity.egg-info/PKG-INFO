@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: networksecurity
+Version: 0.0.1
+Author: suraj yadav
+Author-email: eryadavsuraj@gmail.com
+License-File: LICENCE
+Requires-Dist: python-dotenv
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: certifi
+Requires-Dist: pymongo
+Dynamic: author
+Dynamic: author-email
+Dynamic: license-file
+Dynamic: requires-dist
