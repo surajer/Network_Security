@@ -36,7 +36,7 @@ class DataIngestion:
         except Exception as e:
             raise NetworkSecurityException(e, sys)
         
-    def split_data_as_trai_test(self):
+    def split_data_as_train_test(self):
         try:
             pass
         except Exception as e:
@@ -47,6 +47,4 @@ class DataIngestion:
             pass
         except Exception as e:
             raise NetworkSecurityException(e, sys)
-        
-
         
