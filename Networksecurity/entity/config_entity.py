@@ -4,6 +4,7 @@ from datetime import datetime
 from networksecurity.constant import training_pipeline
 
 print(training_pipeline.ARTIFACT_DIR)
+print(training_pipeline.PIPELINE_NAME)
 
 class TrainingPipelineCongig:
     def __init__(self):
