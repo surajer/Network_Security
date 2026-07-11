@@ -2,7 +2,7 @@ from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logger.logger import logging
 
 #configuration of component and artifact generation
-from networksecurity.entity.config_entity import DataIngestinConfig
+from networksecurity.entity.config_entity import DataIngestionConfig
 from networksecurity.entity.artifact_entity import DataIngestionArtifact
 
 import os
@@ -20,9 +20,9 @@ MONGO_DB_URL=os.getenv("MONGO_DB_URL")
 print(MONGO_DB_URL)
 
 class DataIngestion:
-    def __init__(self, data_ingestion_config: DataingestionConfig):
+    def __init__(self, data_ingestion_config: DataIngestionConfig):
         try:
-            self.data_ingestion_config= self.data_ingestion_config
+            self.data_ingestion_config= data_ingestion_config
 
         except Exception as e:
             raise NetworkSecurityException(e, sys)
@@ -35,7 +35,7 @@ class DataIngestion:
             self.mongo_client=pymongo.MongoClient(MONGO_DB_URL)
             collection = self.mongo_client[database_name][collection_name]
 
-            df=pd.DataFrame(List(collection.find()))
+            df=pd.DataFrame(list(collection.find()))
             if "id" in df.columns.to_list():
                 df=df.drop(columns=["id"], axis=1)
 
@@ -46,7 +46,7 @@ class DataIngestion:
         except Exception as e:
             raise NetworkSecurityException(e, sys)
         
-    def export_data_into_feature_store(self):
+    def export_data_into_feature_store(self, dataframe:pd.DataFrame):
         try:
             feature_store_file_path=self.data_ingestion_config.feature_store_file_path
             #creating folder
@@ -91,7 +91,7 @@ class DataIngestion:
 
             data_ingestion_artifact=DataIngestionArtifact(
                 trained_file_path= self.data_ingestion_config.training_file_path,
-                test_file_path= self.data_ingestion_config.test_file_path
+                test_file_path= self.data_ingestion_config.testing_file_path
             )
             return data_ingestion_artifact
 
